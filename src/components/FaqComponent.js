@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import Card from "@material-ui/core/Card";
 import InputBase from "@material-ui/core/InputBase";
@@ -46,26 +46,6 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const questions = [{
-    query: "What do you offer",
-    reply: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat"
-}, {
-    query: "How do i pay",
-    reply: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat"
-}, {
-    query: "How does it work",
-    reply: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat"
-}, {
-    query: "where can i contact customer care",
-    reply: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat"
-}, {
-    query: "where do i book an appointment",
-    reply: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat"
-}, {
-    query: "How can i chat with the owner",
-    reply: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc maximus, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat"
-}];
-
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Guide/Regular_Expressions#Using_Special_Characters
 function escapeRegexCharacters(str) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -73,9 +53,20 @@ function escapeRegexCharacters(str) {
 
 
 const FaqComponent = (props) => {
-    const [expanded, setExpanded] = React.useState(false);
+    const [questions, setQuestions] = React.useState([]);
     const [inputValue, setInputValue] = React.useState("");
 
+    useEffect(() => {
+        // equivalent to "ComponentDidMount"
+        if(questions.length==0){
+            fetch(`${process.env.REACT_APP_API_URL}/faqs/getAllFaqs`)
+                .then(response=>response.json())
+                .then(response=>{
+                    setQuestions(response);
+                })
+                .catch(err=>console.log(err))
+        }
+    });
     const classes = useStyles();
 
     const getSuggestions = (value) => {
