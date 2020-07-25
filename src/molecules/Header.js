@@ -25,7 +25,7 @@ const Header=(props)=>{
             {
                 !props.userPage &&
                 <Box display="flex" p={1} >
-                    <Box p={1} flexGrow={1} >
+                    <Box p={1} flexGrow={1} style={{cursor:'pointer'}} >
                         <img src={Logo} width={160}/>
                     </Box>
                     <Box>

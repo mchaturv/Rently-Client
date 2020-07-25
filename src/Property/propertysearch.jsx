@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import '../Property/propertycatalogue.css';
-import Autocomplete from 'react-google-autocomplete';
 
 
 class PropertySearch extends React.Component {
