@@ -33,9 +33,9 @@ function MaterialCard(props){
 
     return(
         <ToggleButtonGroup value={value} exclusive onChange={handleChange} className={classes.buttonGroup} aria-label="outlined primary button group">
-            <ToggleButton className={classes.label} value={"House"}>House</ToggleButton>
+            <ToggleButton className={classes.label} value={"House"}>Apartment</ToggleButton>
             <ToggleButton className={classes.label} value={"Condo"}>Condo</ToggleButton>
-            <ToggleButton className={classes.label} value={"Room"}>Room</ToggleButton>
+            <ToggleButton className={classes.label} value={"Room"}>Villa</ToggleButton>
         </ToggleButtonGroup>
     )
 };
