@@ -11,6 +11,9 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import ListIcon from '@material-ui/icons/List';
 import Skeleton from '@material-ui/lab/Skeleton';
+import Divider from "@material-ui/core/Divider";
+import Button from "@material-ui/core/Button";
+import {Link} from "react-router-dom";
 
 
 const Header=(props)=>{
@@ -29,60 +32,14 @@ const Header=(props)=>{
                         <img src={Logo} width={160}/>
                     </Box>
                     <Box>
-                        <PopupState variant="popper" popupId="calendar_popper">
-                            {(popupState) => (
-                                <ClickAwayListener onClickAway={popupState.close}>
-                                    <div>
-                                        <IconButton {...bindToggle(popupState)}>
-                                            <DateRangeIcon fontSize={"large"}/>
-                                        </IconButton>
-
-                                        <Popper {...bindPopper(popupState)} transition>
-                                            {({ TransitionProps }) => (
-                                                <Fade {...TransitionProps} timeout={350}>
-                                                    <Paper>
-                                                        <MaterialTypography variant={"subtitle1"} text={"Calendar notifications go here"}></MaterialTypography>
-                                                        <Skeleton/>
-                                                        <Skeleton/>
-                                                        <Skeleton/>
-                                                        <Skeleton/>
-                                                        <Skeleton/>
-                                                    </Paper>
-                                                </Fade>
-                                            )}
-                                        </Popper>
-                                    </div>
-                                </ClickAwayListener>
-                            )}
-                        </PopupState>
+                        <Link to="/faq">
+                            <Button size="large" style={{height:"100%", fontSize: "large"}}>
+                                FAQ
+                            </Button>
+                        </Link>
                     </Box>
                     <Box>
-                        <PopupState variant="popper" popupId="list_popper">
-                            {(popupState) => (
-                                <ClickAwayListener onClickAway={popupState.close}>
-                                    <div>
-                                        <IconButton {...bindToggle(popupState)}>
-                                            <ListIcon fontSize={"large"}/>
-                                        </IconButton>
-
-                                        <Popper {...bindPopper(popupState)} transition>
-                                            {({ TransitionProps }) => (
-                                                <Fade {...TransitionProps} timeout={350}>
-                                                    <Paper>
-                                                        <MaterialTypography variant={"subtitle1"} text={"wishlist go here"}></MaterialTypography>
-                                                        <Skeleton/>
-                                                        <Skeleton/>
-                                                        <Skeleton/>
-                                                        <Skeleton/>
-                                                        <Skeleton/>
-                                                    </Paper>
-                                                </Fade>
-                                            )}
-                                        </Popper>
-                                    </div>
-                                </ClickAwayListener>
-                            )}
-                        </PopupState>
+                        <Divider color={"#424242"} orientation="vertical" />
                     </Box>
                     <Box>
                         <PopupState variant="popper" popupId="notification_popper">
