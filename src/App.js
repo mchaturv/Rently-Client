@@ -8,14 +8,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import 'mdbreact/dist/css/mdb.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/svgs/brands/*.svg';
 import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
 import '@fortawesome/fontawesome-free/css/fontawesome.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '@fortawesome/fontawesome-free/css/all.css';
-import Homepage from "./routes/Homepage";
+import Homepage from "./Home/home";
 import PostAd from "./routes/PostAd";
 import FAQ from "./routes/FAQ";
 import PropertyCatalogue from "./Property/propertycatalogue";
@@ -44,7 +43,7 @@ function App() {
         <BrowserRouter>
         <Switch>
                 <Route path="/userprofile" component={UserProfile} exact />
-                <Route path="/home" component={Homepage} exact/>
+                <Route path="/" component={Homepage} exact/>
                 <Route path="/properties" component={PropertyCatalogue} exact/>
                 <Route path="/postad" component={PostAd} exact/>
                 <Route path="/faq" component={FAQ} exact/>

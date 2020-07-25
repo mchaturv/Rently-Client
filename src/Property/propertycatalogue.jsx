@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import ReactDOM from "react-dom";
+import { withRouter } from "react-router-dom";
 import { Fragment } from 'react';
 import './propertycatalogue.css';
 import Header from '../molecules/Header'
@@ -14,22 +16,27 @@ import Modal from './ModalSetup';
 
 var api = "https://rently-services-group13.herokuapp.com/api/properties/";
 
+var searchDetails;
+var userlat;
+var userlng;
+
 class PropertyCatalogue extends Component {
 
   constructor(props) {
     super(props);
+    
     this.state = {
       address: '',
       city: '',
       area: '',
       state: '',
       mapPosition: {
-        lat: 44.6461676,
-        lng: -63.7029374
+        lat: 43.691351,
+        lng: -79.458748
       },
       markerPosition: {
-        lat: 44.6461676,
-        lng: -63.7029374
+        lat: 43.691351,
+        lng: -79.458748
       },
 
       showSearchResult: false,
@@ -50,31 +57,85 @@ class PropertyCatalogue extends Component {
 
 
   componentDidMount() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function (position) {
-      });
-
+    
+    if(!(typeof this.props.location.state =="undefined"))
+    {
+      searchDetails=this.props.location.state.searchdetails;
+      Geocode.fromLatLng(searchDetails.latattribute, searchDetails.lngattribute).then(
+        response => {
+          const address = response.results[0].formatted_address,
+            addressArray = response.results[0].address_components,
+            city = this.getCity(addressArray),
+            area = this.getArea(addressArray),
+            state = this.getState(addressArray);
+  
+          this.setState({
+            address: (address) ? address : '',
+            area: (area) ? area : '',
+            city: (city) ? city : '',
+            state: (state) ? state : '',
+            markerPosition: {
+              lat: searchDetails.latattribute,
+              lng: searchDetails.lngattribute
+            },
+            mapPosition: {
+              lat: searchDetails.latattribute,
+              lng: searchDetails.lngattribute
+            }
+          },
+          () => {
+            this.searchPropertyForLocation();
+          });
+        },
+        error => {
+          console.error(error);
+        }
+      );
     }
-    Geocode.fromLatLng(this.state.mapPosition.lat, this.state.mapPosition.lng).then(
-      response => {
-        const address = response.results[0].formatted_address,
-          addressArray = response.results[0].address_components,
-          city = this.getCity(addressArray),
-          area = this.getArea(addressArray),
-          state = this.getState(addressArray);
-
-        this.setState({
-          address: (address) ? address : '',
-          area: (area) ? area : '',
-          city: (city) ? city : '',
-          state: (state) ? state : '',
-        })
-      },
-      error => {
-        console.error(error);
+    else{
+      console.log("fresh")
+      if (navigator.geolocation) {
+        console.log("fresh fetch")
+        
+        navigator.geolocation.getCurrentPosition(async function (position) {
+          console.log(position.coords.latitude,position.coords.longitude)
+            userlat = position.coords.latitude;
+            userlng = position.coords.longitude; 
+            
+            
+        });
+        
+        
+        this.searchPropertyForCurrentLocation(userlat,userlng)  
+        
+        
       }
-    );
-    this.searchPropertyForCurrentLocation();
+      else{
+        console.log("fresh  not fetch")
+      Geocode.fromLatLng(this.state.mapPosition.lat, this.state.mapPosition.lng).then(
+        response => {
+          const address = response.results[0].formatted_address,
+            addressArray = response.results[0].address_components,
+            city = this.getCity(addressArray),
+            area = this.getArea(addressArray),
+            state = this.getState(addressArray);
+
+          
+          this.setState({
+            address: (address) ? address : '',
+            area: (area) ? area : '',
+            city: (city) ? city : '',
+            state: (state) ? state : '',
+          })
+        },
+        error => {
+          console.error(error);
+        }
+      );
+      this.searchPropertyForLocation();
+      }
+    }
+    console.log(userlat,userlng)
   }
 
   /**
@@ -129,7 +190,21 @@ class PropertyCatalogue extends Component {
     }
   };
 
-  searchPropertyForCurrentLocation() {
+  searchPropertyForCurrentLocation(latatr,lngatr) {
+    axios.get(api + 'allNearByProperties', {
+      params: {
+        lat: 44.6461676,
+        lng: -63.7029374
+      }
+    }).then(response => {
+      const searchResult = response.data;
+      this.setState({ properties: searchResult, showSearchResult: true, activeSearchIndex: 0 })
+    }).catch(error => {
+      this.setState({ error: true })
+    })
+  };
+
+  searchPropertyForLocation() {
     axios.get(api + 'allNearByProperties', {
       params: {
         lat: this.state.markerPosition.lat,
@@ -197,7 +272,7 @@ class PropertyCatalogue extends Component {
         lng: lngValue
       },
     })
-    this.searchPropertyForCurrentLocation();
+    this.searchPropertyForLocation();
   };
 
 
@@ -328,7 +403,7 @@ class PropertyCatalogue extends Component {
                     }
                   />
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. </p>
+                <p>Search for houses at your select location, cities and countries </p>
               </form>
             </div>
           </div>
