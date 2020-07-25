@@ -1,13 +1,26 @@
-import React from "react";
-import "./App.css";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import UserProfile from "./routes/UserProfile";
-import { createMuiTheme } from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/core";
-import Homepage from "./routes/Homepage";
+import React from 'react';
+import './App.css';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import UserProfile from './routes/UserProfile';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import 'mdbreact/dist/css/mdb.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import '@fortawesome/fontawesome-free/svgs/brands/*.svg';
+import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
+import '@fortawesome/fontawesome-free/css/fontawesome.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import '@fortawesome/fontawesome-free/css/all.css';
+import Homepage from "./Home/home";
 import PostAd from "./routes/PostAd";
 import FAQ from "./routes/FAQ";
-import { HomePage } from "./components/HomePage";
+import PropertyCatalogue from "./Property/propertycatalogue";
+import Propertydetails from "./Property/propertydetails"
+
+
 
 const theme = createMuiTheme({
   overrides: {
@@ -28,12 +41,13 @@ function App() {
     <ThemeProvider theme={theme}>
       <main>
         <BrowserRouter>
-          <Switch>
-            <Route path="/userprofile" component={UserProfile} exact />
-            <Route path="/home" component={Homepage} exact />
-            <Route path="/postad" component={PostAd} exact />
-            <Route path="/faq" component={FAQ} exact />
-          </Switch>
+        <Switch>
+                <Route path="/userprofile" component={UserProfile} exact />
+                <Route path="/" component={Homepage} exact/>
+                <Route path="/properties" component={PropertyCatalogue} exact/>
+                <Route path="/postad" component={PostAd} exact/>
+                <Route path="/faq" component={FAQ} exact/>
+        </Switch>
         </BrowserRouter>
       </main>
     </ThemeProvider>

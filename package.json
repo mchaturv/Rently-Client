@@ -10,22 +10,35 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.5.0",
+    "font-awesome": "^4.7.0",
+    "google-maps-react": "^2.0.6",
     "jquery": "^3.5.1",
     "material-ui-popup-state": "^1.5.4",
+    "mdbootstrap": "^4.19.1",
+    "mdbreact": "^4.27.0",
+    "popper.js": "^1.16.1",
     "react": "^16.13.1",
     "react-autosuggest": "^10.0.2",
+    "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
-    "react-material-ui-form-validator": "^2.0.10",
+    "react-geocode": "^0.2.1",
+    "react-google-autocomplete": "^1.2.6",
+    "react-google-maps": "^9.4.5",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "styled-components": "^5.1.1"
+    "styled-components": "^5.1.1",
+    "typeface-montserrat": "0.0.75",
+    "typeface-playfair-display": "^1.1.4",
+    "react-material-ui-form-validator": "^2.0.10"
   },
   "scripts": {
     "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"

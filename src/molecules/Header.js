@@ -16,12 +16,9 @@ import React, { useState } from "react";
 import PopupState, { bindToggle, bindPopper } from "material-ui-popup-state";
 import MaterialTypography from "../components/MaterialTypography";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import DateRangeIcon from "@material-ui/icons/DateRange";
-import ListIcon from "@material-ui/icons/List";
 import Skeleton from "@material-ui/lab/Skeleton";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import MaterialModal from "../components/MaterialModal";
 import LoginModal from "../components/LoginModal";
 import RegisterModal from "../components/RegisterModal";
 import LogoutModal from "../components/LogoutModal";
@@ -66,7 +63,7 @@ const Header = (props) => {
     <MaterialPaper paddingRight={3}>
       {!props.userPage && (
         <Box display="flex" p={1}>
-          <Box p={1} flexGrow={1}>
+                    <Box p={1} flexGrow={1} >
             <img src={Logo} width={160} />
           </Box>
           <Box>
