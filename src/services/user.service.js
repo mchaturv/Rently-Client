@@ -1,3 +1,5 @@
+// Author - Anshdeep Singh (an450723@dal.ca)
+
 export const userService = {
   login,
   register,
@@ -9,8 +11,6 @@ function login(email, password) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
   };
-
-  // chane apis from environment variable
 
   return fetch(
     `https://rently-services-group13.herokuapp.com/api/users/authenticate`,
@@ -27,7 +27,6 @@ function login(email, password) {
       }
       return user;
     });
-  // change error status codes in backend APIs
 }
 
 function register(name, email, password) {
@@ -45,7 +44,6 @@ function register(name, email, password) {
     .then((user) => {
       return user;
     });
-  // change error status codes in backend APIs
 }
 
 function handleResponse(response) {

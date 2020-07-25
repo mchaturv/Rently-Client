@@ -1,3 +1,5 @@
+// Author - Anshdeep Singh (an450723@dal.ca)
+
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
@@ -6,16 +8,11 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { userService } from "../services/user.service";
 import { useLocation, useHistory } from "react-router-dom";
-import RegisterModal from "../components/RegisterModal";
-import { IconButton } from "@material-ui/core";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -30,9 +27,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-  },
-  avatar: {
-    margin: theme.spacing(1),
   },
   form: {
     width: "100%",
@@ -61,7 +55,7 @@ const LoginModal = (props) => {
     e.preventDefault();
     handleClose();
     userService.login(e.target.email.value, e.target.password.value).then(
-      (user) => {
+      () => {
         const { from } = location.state || {
           from: { pathname: "/home" },
         };
@@ -120,16 +114,7 @@ const LoginModal = (props) => {
             Login
           </Button>
           <Grid container>
-            <Grid item>
-              {/* <Link
-                onClick={() => {
-                  handleClose();
-                }}
-                variant="body2"
-              >
-                Haven't registered? Sign up
-              </Link> */}
-            </Grid>
+            <Grid item></Grid>
           </Grid>
         </form>
       </div>

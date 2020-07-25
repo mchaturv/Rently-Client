@@ -1,20 +1,15 @@
+// Author - Anshdeep Singh (an450723@dal.ca)
+
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
-import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { userService } from "../services/user.service";
-import { useLocation, useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -42,8 +37,6 @@ const useStyles = makeStyles((theme) => ({
 
 const RegisterModal = (props) => {
   const classes = useStyles();
-  const location = useLocation();
-  const history = useHistory();
 
   const [open, setOpen] = React.useState(false);
 
@@ -65,13 +58,11 @@ const RegisterModal = (props) => {
         e.target.password.value
       )
       .then(
-        (user) => {
+        () => {
           alert("Registration successful. Now you can login!");
         },
         (error) => alert(error)
       );
-
-    // password match validation
   };
   const body = (
     <Container component="main" maxWidth="xs">
@@ -144,11 +135,7 @@ const RegisterModal = (props) => {
             Register
           </Button>
           <Grid container justify="center">
-            <Grid item>
-              {/* <Link href="#" variant="body2">
-                Already have an account? Sign in
-              </Link> */}
-            </Grid>
+            <Grid item></Grid>
           </Grid>
         </form>
       </div>
