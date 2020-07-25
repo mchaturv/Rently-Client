@@ -19,17 +19,20 @@ class PostAd extends Component {
         //this.state={formValidate:false};
         this.state = {
             title:"",
+            property_type:"",
+            property_size:"",
+            bedroom:"",
+            bathroom:"",
+            parking:"",
+            price:"",
             description:"",
+            rulesanddetails:"",
+            imageUrl:"",
             address:"",
             city:"",
             province:"",
             zipcode:"",
             country:"",
-            currency:"",
-            property:"",
-            bedroom:"",
-            bathroom:"",
-            price:"",
             type:""
         }
 
@@ -38,6 +41,9 @@ class PostAd extends Component {
         if(trigger){
             this.setState({formValidate:true});
         }
+    }
+    setInputValueFunction(valueReceivedFromChild, storeIn){
+        this.setState({[storeIn]:valueReceivedFromChild});
     }
 
     async addAddress1() {
@@ -53,7 +59,19 @@ class PostAd extends Component {
         }
         const response = await fetch(`${process.env.REACT_APP_API_URL}/insertAd`, this.createRequestHeader(data, 'POST'));
     }
-
+    createRequestHeader(data, method) {
+        return {
+            method: method, // *GET, POST, PUT, DELETE, etc.
+            mode: 'cors', // no-cors, *cors, same-origin
+            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            redirect: 'follow', // manual, *follow, error
+            referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+            body: JSON.stringify(data) // body data type must match "Content-Type" header
+        };
+    }
     render() {
         return (
             <div>
@@ -65,7 +83,7 @@ class PostAd extends Component {
                         <div style={{textAlign: "center"}}>
                             <MaterialTypography paddingBottom={1} variant={"h4"} text={"Create an advertisement"}/>
                             <MaterialTypography paddingTop={1} paddingBottom={1} variant={"subtitle1"} text={"Fill all the details"} color={"textSecondary"}/>
-                            <MaterialInput text={"Title"} marginTop={2} formValidate={this.state.formValidate}></MaterialInput>
+                            <MaterialInput text={"Title"} marginTop={2} storeValueIn={"title"} setInputValueFunction={this.setInputValueFunction.bind(this)} formValidate={this.state.formValidate}></MaterialInput>
                             <MaterialInput text={"Property Description"} marginTop={2} formValidate={this.state.formValidate}></MaterialInput>
                             <MaterialInput text={"Street Address"} marginTop={3} formValidate={this.state.formValidate}></MaterialInput>
 
