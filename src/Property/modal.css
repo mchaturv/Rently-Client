@@ -1,0 +1,68 @@
+.modal-wrapper {
+    background: white;
+    border: 1px solid #d0cccc;
+    box-shadow: 6px 5px 8px 0 rgb(108, 86, 169), -8px 11px 20px 0 rgb(68, 38, 86);
+    margin: 100px auto 0;
+    transition: all .8s;
+    width: 95%;
+    border-radius: 10px;
+    overflow: scroll;
+    margin-top: -70px;
+    display: flex;
+    height: 650px;
+    }
+    
+    .modal-header {
+    background: rgb(255, 253, 253);
+    height: 40px;
+    line-height: 40px;
+    padding: 5px 20px;
+    text-align: right;
+    border: 0px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    }
+    
+    .modal-dialog .modal-content {
+        overflow: scroll;
+        width: 95%;
+        margin-right: -10px;
+        border: 0;
+        border-radius: .125rem;
+        box-shadow: 0 5px 11px 0 rgba(0,0,0,0.18), 0 4px 15px 0 rgba(0,0,0,0.15);
+    }
+    
+    .modal-content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        pointer-events: auto;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid rgba(0,0,0,.2);
+        border-radius: .3rem;
+        outline: 0;
+    }
+    
+    .modal.show .modal-dialog {
+        transform: none;
+        max-width: 95%;
+        padding: 0px;
+        margin-right: 0px;
+    }
+    
+    .close-modal-btn {
+        color: #160b66;
+        cursor: pointer;
+        float: right;
+        font-size: 40px;
+        margin: 0;
+    }
+    
+    .close-modal-btn:hover {
+    color: black;
+    }
+    
+    
+    

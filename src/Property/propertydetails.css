@@ -1,0 +1,217 @@
+.property-container
+{
+    padding-top: 0px;
+    padding-bottom: 110px;
+    font-family: playfair display;
+}
+
+
+.property .property-m-image
+{
+    margin-top: 20px;
+    border: 2px solid #995fc5;
+    transition: 0.5s;
+    border-radius: 9px;
+    background-color: #fff;
+    box-shadow: 0px 10px 25.5px 4.5px rgba(20, 48, 58, 0.1);
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.property .property-m-image img
+{
+    vertical-align: middle;
+    border-style: none;
+    max-width: 100%;
+}
+
+.property .property-header {
+    margin-bottom: 35px;
+}
+
+.property-header h3 {
+    margin-bottom: 10px;
+    font-weight: bold;
+    
+}
+
+.property-header h5 {
+    font-weight: 500;
+    color: #4e4c4c;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.property-header p {
+    line-height: 1;
+    margin-bottom: 0;
+    
+}
+
+.property .property-basicinfo {
+    
+    margin-bottom: 40px;
+    border-top: 2px solid #dfe5e8;
+    background: #fff;
+    padding: 0.5rem 1rem 0.5rem 2rem;
+    border: 1px solid #e8ebef;
+    transition: 0.5s;
+    border-radius: 9px;
+    box-shadow: 0px 10px 25.5px 4.5px rgba(20, 48, 58, 0.1);
+}
+
+.property .property-basicinfo .info-list {
+    padding-top: 20px;
+}
+
+.property .property-basicinfo .info-list .info{
+    display: inline-block;
+    position: relative;
+    font-size: 15px;
+    color: #584d51;
+    padding-right: 15px;
+    margin-right: 45px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.property .property-basicinfo .info-list .info i{
+    font-size: 24px;
+    color: #995fc5;
+    margin-right: 25px;
+}
+
+.property .property-description
+{
+    padding: 1rem;
+    border: 1px solid #e8ebef;
+    transition: 0.5s;
+    border-radius: 9px;
+    background-color: #fff;
+    box-shadow: 0px 10px 25.5px 4.5px rgba(20, 48, 58, 0.1);
+    margin-bottom: 20px;
+}
+
+.property .property-description h4 {
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.property .property-description p {
+    margin-bottom: 35px;
+    font-size: 16px;
+    color: #6a6a6a;
+    line-height: 2;
+}
+
+.property-features{
+    padding: 1rem;
+    border: 1px solid #e8ebef;
+    transition: 0.5s;
+    border-radius: 9px;
+    background-color: #fff;
+    box-shadow: 0px 10px 25.5px 4.5px rgba(20, 48, 58, 0.1);
+}
+
+.property-features .feature {
+    margin-bottom: 30px;
+    
+}
+
+.property-features .feature h6 {
+    margin-bottom: 5px;
+    font-weight:bold ;
+}
+
+.property-features .feature p {
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+.owner-container {
+    margin-bottom: 37px;
+}
+
+.owner-container .owner-text {
+    padding: 35px 26px 45px;
+    text-align: center;
+    background: #f5f8fa;
+}
+
+.owner-container .owner-text  h4 {
+    margin-bottom: 10px;
+}
+
+.owner-container .owner-text h6 {
+    color: #6a6a6a;
+    margin-bottom: 25px;
+}
+
+.owner-container p {
+    margin-bottom: 30px;
+}
+
+.contactowner-btn {
+    display: block;
+    
+    margin: auto;
+    margin-bottom: 30px;
+    padding: 1rem;
+    height: 50px;
+    background: #995fc5;
+    color: #ffffff;
+    border: none;
+    border: 1px solid #270a3d;
+}
+
+
+
+.makeappointment-btn {
+    display: block;
+    
+    margin: auto;
+    padding: 1rem;
+    height: 50px;
+    background: #995fc5;
+    color: #ffffff;
+    border: none;
+    border: 1px solid #270a3d;
+}
+
+.map-view {
+    position: relative;
+    height: 407px;
+
+}
+
+.map-view iframe{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    
+}
+
+/* Styling the map view to dsplay location for the property*/
+
+.map-view .icon {
+    font-size: 18px;
+    color: #ffffff;
+    width: 34px;
+    height: 34px;
+    background: #995fc5;
+    text-align: center;
+    line-height: 34px;
+    display: inline-block;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 160px;
+    -webkit-transform: translateX(-17px);
+    -ms-transform: translateX(-17px);
+    transform: translateX(-17px);
+    z-index: 1;
+}
+
+
