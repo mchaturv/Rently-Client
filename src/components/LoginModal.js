@@ -85,6 +85,7 @@ const LoginModal = (props) => {
             fullWidth
             id="email"
             label="Email Address"
+            type="email"
             name="email"
             autoComplete="email"
             autoFocus
