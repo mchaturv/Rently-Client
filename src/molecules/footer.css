@@ -1,0 +1,99 @@
+.footer-section
+{
+  background-image: url('../images/footer.bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  border: 1px solid #e8ebef;
+  box-shadow: 0px 10px 25.5px 4.5px rgba(20, 48, 58, 0.1);
+  color: white;
+  font-family:playfair display;
+}
+
+.footer-section .footer-text {
+  padding-top: 70px;
+  padding-bottom: 35px;
+}
+
+.footer-text .footer-logo {
+  margin-bottom: 30px;
+  text-align: start;
+}
+
+.footer-text .footer-logo .logo {
+  margin-bottom: 34px;
+}
+
+.footer-text .footer-logo .logo a {
+  display: inline-block;
+  color: #995fc5;
+  font-size: 32px;
+}
+
+/* Footer section for the Socila and general contact details*/
+.footer-text .footer-widget {
+  margin-bottom: 30px;
+  overflow: hidden;
+  text-align:start;
+  line-height: 1.8;
+}
+
+.footer-text .footer-widget h4 {
+  font-size: 22px;
+  color: #995fc5;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.footer-text .footer-widget ul {
+  list-style: none;
+  float: left;
+}
+
+.footer-text .footer-widget ul.social {
+  width: 100%;
+  padding: 0;
+
+}
+
+.footer-text .footer-widget ul.social li {
+  position: relative;
+  padding-left: 28px;
+  
+}
+
+/* styling th socila icons*/
+.footer-text .footer-widget ul.social li i {
+  font-size: 18px;
+  position: absolute;
+  left: 0;
+  top: 10px;
+}
+
+.footer-text .footer-widget ul.general {
+  width: 100%;
+  padding: 0;
+
+}
+
+.footer-text .footer-widget ul.general li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 4px;
+  
+}
+
+.footer-text .footer-widget ul.general li i {
+  font-size: 18px;
+  position: absolute;
+  left: 0;
+  top: 10px;
+  
+}
+
+
+.footer-text .footer-widget ul li a {
+  font-size: 16px;
+  color:whitesmoke;
+  line-height: 36px;
+}

@@ -4,9 +4,24 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import UserProfile from './routes/UserProfile';
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/core';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import 'mdbreact/dist/css/mdb.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import '@fortawesome/fontawesome-free/svgs/brands/*.svg';
+import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
+import '@fortawesome/fontawesome-free/css/fontawesome.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import '@fortawesome/fontawesome-free/css/all.css';
 import Homepage from "./routes/Homepage";
 import PostAd from "./routes/PostAd";
 import FAQ from "./routes/FAQ";
+import PropertyCatalogue from "./Property/propertycatalogue";
+import Propertydetails from "./Property/propertydetails"
+
+
 
 const theme = createMuiTheme({
     overrides:{
@@ -30,6 +45,7 @@ function App() {
         <Switch>
                 <Route path="/userprofile" component={UserProfile} exact />
                 <Route path="/home" component={Homepage} exact/>
+                <Route path="/properties" component={PropertyCatalogue} exact/>
                 <Route path="/postad" component={PostAd} exact/>
                 <Route path="/faq" component={FAQ} exact/>
         </Switch>
