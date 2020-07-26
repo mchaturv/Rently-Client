@@ -57,7 +57,7 @@ const LoginModal = (props) => {
     userService.login(e.target.email.value, e.target.password.value).then(
       () => {
         const { from } = location.state || {
-          from: { pathname: "/home" },
+          from: { pathname: "/" },
         };
         history.push(from);
       },
