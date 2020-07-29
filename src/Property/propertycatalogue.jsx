@@ -19,7 +19,7 @@ import { GoogleAPI } from "google-maps-react";
 import { fontSize, positions } from '@material-ui/system';
 
 
-var api = "https://rently-services-group13.herokuapp.com/api/properties/";
+var api = process.env.REACT_APP_API_URL+"/properties/";
 
 var searchDetails;
 var userlat;

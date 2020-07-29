@@ -23,23 +23,23 @@ import Propertydetails from "./Property/propertydetails"
 
 
 const theme = createMuiTheme({
-    overrides:{
-        spacing: 4
+  overrides: {
+    spacing: 4,
+  },
+  palette: {
+    primary: {
+      main: "#995fc5",
     },
-    palette: {
-        primary: {
-            main: '#995fc5'
-        },
-        secondary: {
-            main: '#f5f5f5'
-        }
+    secondary: {
+      main: "#f5f5f5",
     },
+  },
 });
 
 function App() {
-    return (
-        <ThemeProvider theme={theme}>
-        <main>
+  return (
+    <ThemeProvider theme={theme}>
+      <main>
         <BrowserRouter>
         <Switch>
                 <Route path="/userprofile" component={UserProfile} exact />
@@ -49,9 +49,9 @@ function App() {
                 <Route path="/faq" component={FAQ} exact/>
         </Switch>
         </BrowserRouter>
-        </main>
-        </ThemeProvider>
-    )
+      </main>
+    </ThemeProvider>
+  );
 }
 
 export default App;
