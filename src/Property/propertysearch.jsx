@@ -31,7 +31,7 @@ class PropertySearch extends React.Component {
                                     {/* <input type="text" placeholder="Search by location, city, state, postcode" required='true'/> */}
                                     <Autocomplete placeholder="Search by location, city, state, postcode" required='true'
                                             onPlaceSelected={ this.onPlaceSelected }
-                                            />
+                                            /> 
                                      <button class="search-btn" onClick={this.onSubmitForm}>Search</button>
                                 </div>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. </p>

@@ -11,7 +11,7 @@ class PropertyCard extends React.Component {
         return (
             <Fragment>
 
-                <div className="property-card" onClick={this.props.onPropertyClick}>
+                <div className="property-card" id={this.props.property.title} onClick={this.props.onPropertyClick}>
                     <div className="row">
                         <div className="col-md-4">
                             <div className="property-pic">

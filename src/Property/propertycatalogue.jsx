@@ -13,6 +13,11 @@ import Geocode from "react-geocode";
 import axios from 'axios';
 import Spinner from 'react-bootstrap/Spinner'
 import Modal from './ModalSetup';
+import 'react-fontawesome'
+import Fontawesome from 'react-fontawesome'
+import { GoogleAPI } from "google-maps-react";
+import { fontSize, positions } from '@material-ui/system';
+
 
 var api = "https://rently-services-group13.herokuapp.com/api/properties/";
 
@@ -53,6 +58,9 @@ class PropertyCatalogue extends Component {
       isShowing: false
     }
 
+    this.onMapClick = this.onMapClick.bind(this);
+    this.searchPropertyForCurrentLocation = this.searchPropertyForCurrentLocation.bind(this);
+
   }
 
 
@@ -60,6 +68,7 @@ class PropertyCatalogue extends Component {
     
     if(!(typeof this.props.location.state =="undefined"))
     {
+      console.log("search from home")
       searchDetails=this.props.location.state.searchdetails;
       Geocode.fromLatLng(searchDetails.latattribute, searchDetails.lngattribute).then(
         response => {
@@ -93,47 +102,46 @@ class PropertyCatalogue extends Component {
       );
     }
     else{
-      console.log("fresh")
-      if (navigator.geolocation) {
-        console.log("fresh fetch")
-        
-        navigator.geolocation.getCurrentPosition(async function (position) {
+      console.log("fresh search")
+      if (navigator.geolocation) {  
+        console.log("accepted");    
+        navigator.geolocation.getCurrentPosition(function (position) {
           console.log(position.coords.latitude,position.coords.longitude)
             userlat = position.coords.latitude;
             userlng = position.coords.longitude; 
-            
-            
-        });
-        
-        
-        this.searchPropertyForCurrentLocation(userlat,userlng)  
-        
-        
-      }
-      else{
-        console.log("fresh  not fetch")
-      Geocode.fromLatLng(this.state.mapPosition.lat, this.state.mapPosition.lng).then(
-        response => {
-          const address = response.results[0].formatted_address,
-            addressArray = response.results[0].address_components,
-            city = this.getCity(addressArray),
-            area = this.getArea(addressArray),
-            state = this.getState(addressArray);
-
-          
-          this.setState({
-            address: (address) ? address : '',
-            area: (area) ? area : '',
-            city: (city) ? city : '',
-            state: (state) ? state : '',
-          })
+              
         },
         error => {
           console.error(error);
+          this.searchPropertyForLocation();
         }
-      );
-      this.searchPropertyForLocation();
+        
+        );
       }
+      else{
+        console.log("denied")
+        Geocode.fromLatLng(this.state.mapPosition.lat, this.state.mapPosition.lng).then(
+          response => {
+            const address = response.results[0].formatted_address,
+              addressArray = response.results[0].address_components,
+              city = this.getCity(addressArray),
+              area = this.getArea(addressArray),
+              state = this.getState(addressArray);  
+            this.setState({
+              address: (address) ? address : '',
+              area: (area) ? area : '',
+              city: (city) ? city : '',
+              state: (state) ? state : '',
+            })
+          },
+          error => {
+            console.error(error);
+          }
+        );
+        console.log("fetching for default location")
+        this.searchPropertyForLocation();
+      }
+      console.log("geolocation" in navigator, this.props.isGeolocationEnabled)
     }
     console.log(userlat,userlng)
   }
@@ -191,10 +199,11 @@ class PropertyCatalogue extends Component {
   };
 
   searchPropertyForCurrentLocation(latatr,lngatr) {
+    console.log("hitting api for current ",latatr,lngatr);
     axios.get(api + 'allNearByProperties', {
       params: {
         lat: 44.6461676,
-        lng: -63.7029374
+        lng: -63.583630
       }
     }).then(response => {
       const searchResult = response.data;
@@ -205,6 +214,7 @@ class PropertyCatalogue extends Component {
   };
 
   searchPropertyForLocation() {
+    console.log("hitting api",this.state.markerPosition.lat,this.state.markerPosition.lng);
     axios.get(api + 'allNearByProperties', {
       params: {
         lat: this.state.markerPosition.lat,
@@ -247,6 +257,39 @@ class PropertyCatalogue extends Component {
     });
   };
 
+  onMarkerDragEnd = ( event ) => {
+    console.log( 'event', event );
+    let newLat = event.latLng.lat(),
+     newLng = event.latLng.lng(),
+     addressArray = [];
+  Geocode.fromLatLng( newLat , newLng ).then(
+     response => {
+      const address = response.results[0].formatted_address,
+       addressArray =  response.results[0].address_components,
+       city = this.getCity( addressArray ),
+       area = this.getArea( addressArray ),
+       state = this.getState( addressArray );
+  this.setState( {
+       address: ( address ) ? address : '',
+       area: ( area ) ? area : '',
+       city: ( city ) ? city : '',
+       state: ( state ) ? state : '',
+       markerPosition: {
+         lat: newLat,
+         lng: newLng
+       },
+       mapPosition: {
+         lat: newLat,
+         lng: newLng
+       }
+      } )
+     },
+     error => {
+      console.error(error);
+     }
+    );
+    this.searchPropertyForLocation();
+   };
   
 
   onPlaceSelected = (place) => {
@@ -322,48 +365,113 @@ class PropertyCatalogue extends Component {
       mybutton.style.display = "none";
     }
   }
+  
+  onMapClick() {
+    var mybutton = document.getElementById("topBtn");
+    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+
+  takeToComponent(event,item) {
+    var div = '#'+item.title;
+    window.location.href=div;
+    //event.preventDefault();
+    //event.stopPropagation(); 
+
+  }
 
   render() {
     
     window.onscroll = this.scrollFunction;
     
+    const icon = () => (
+      <Fontawesome
+        className='fa fa-home'
+        name='fa fa-home'
+        size='2x'
+        spin
+        style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }}/>
+    );
+
     const AsyncMap = withScriptjs(
       withGoogleMap(
         props => (
           <GoogleMap google={this.props.google}
-            defaultZoom={this.props.zoom}
-            defaultCenter={{ lat: this.state.mapPosition.lat, lng: this.state.mapPosition.lng }}
+            defaultZoom={12}
+            defaultCenter={{ lat: this.state.mapPosition.lat, lng: this.state.mapPosition.lng }} 
           >
             {/* For Auto complete Search Box */}
             <Autocomplete
               style={{
-                height: '60px',
+                height: '45px',
                 paddingLeft: '47px',
                 color: '#995fc5',
                 fontStyle: 'italic',
-                border: 'none'
+                border: 'none',
+                margin:'3px',
+                width:'-webkit-fill-available'
               }}
               placeholder="search with city or postal code"
               onPlaceSelected={this.onPlaceSelected}
               types={['(regions)']}
             />
-            {/*Marker*/}
+
+            {this.state.properties.map((item, index) =>
+         
+              <Marker google={this.props.google}
+                //key={index}
+                draggable={true}
+                onDragEnd={this.onMarkerDragEnd}
+                position={{ lat: (item.geolocation.coordinates[0]+ 0.0010), lng: (item.geolocation.coordinates[1])}} 
+                title={item.title}
+                icon={{
+                  path: "M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z",
+                  scale: 0.05,
+                  size:'2px',
+                  strokeWeight: 0,
+                  scaledSize :0.001,
+                 
+                  // strokeColor: 'black',
+                  // strokeOpacity: 1,
+                  fillColor: '#995fc5',
+                  fillOpacity: 1
+                }}
+                
+                //onClick={(event)=>this.openModalHandler(event,item)}
+                onClick={(event)=>this.takeToComponent(event,item)}
+                >
+                 
+                </Marker>
+                
+            )}
+
             <Marker google={this.props.google}
-              name={'Dolores park'}
-              draggable={true}
-              onDragEnd={this.onMarkerDragEnd}
-              position={{ lat: this.state.markerPosition.lat, lng: this.state.markerPosition.lng }}
-            />
-            <Marker />
+                draggable={true}
+                onDragEnd={this.onMarkerDragEnd}
+                position={{ lat: this.state.markerPosition.lat, lng: this.state.markerPosition.lng }} 
+                name={'Dolores park'}>
+                  </Marker>
+
+            {this.state.properties.map((item, index) =>   
+              <Fragment>
+              <InfoWindow
+                  key={index}
+                  onClose={this.onInfoWindowClose}
+                  position={{ lat: (item.geolocation.coordinates[0] + 0.0010), lng: item.geolocation.coordinates[1] }}
+                > 
+                <div>
+                <span style={{ padding: 0, margin: 0, color:'#995fc5' }} >{item.title}</span>
+               
+                </div>
+                </InfoWindow>
+             </Fragment> 
+            )}
+
             {/* InfoWindow on top of marker */}
-            <InfoWindow
-              onClose={this.onInfoWindowClose}
-              position={{ lat: (this.state.markerPosition.lat + 0.0018), lng: this.state.markerPosition.lng }}
-            >
-              <div>
-                <span style={{ padding: 0, margin: 0 }}>{this.state.address}</span>
-              </div>
-            </InfoWindow>
+            
           </GoogleMap>
         )
       )
@@ -387,24 +495,19 @@ class PropertyCatalogue extends Component {
         <div className="container">
           <div className="row">
             <div className="search-container">
-              <form className="property-search-form" >
 
-                <div className="search-input">
-                  <AsyncMap
+              <AsyncMap
                     googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTOah98FDMQHJVNk7oRe_kjKdZ_XYIUd4&libraries=places"
                     loadingElement={
-                      <div style={{ height: `200%`, width: '-webkit-fill-available' }} />
+                      <div tyle={{ height: `100%`, width: '100%', position:"relative" }} />
                     }
                     containerElement={
-                      <div style={{ height: '200%', width: '-webkit-fill-available' }} />
+                      <div style={{ height: '100%', width: '100%' ,position:"relative" }} />
                     }
                     mapElement={
-                      <div style={{ height: `200%`, width: '-webkit-fill-available' }} />
+                      <div style={{ height: `80%`, width: '100%',position:"relative" }} />
                     }
                   />
-                </div>
-                <p>Search for houses at your select location, cities and countries </p>
-              </form>
             </div>
           </div>
         </div>
@@ -424,7 +527,7 @@ class PropertyCatalogue extends Component {
                       <div className="property-list">
                         {/* using the property filter component to display list of property in card view */}
                         {this.state.properties.map((item, index) =>
-                          <PropertyCard key={index}
+                          <PropertyCard key={index} id ={index}
                             onPropertyClick={this.openModalHandler.bind(this, item)}
                             property={item} />
 
@@ -448,6 +551,7 @@ class PropertyCatalogue extends Component {
                   </>
                   <h4>Loading...</h4>
                 </div>
+
               }
             </div>
           </div>

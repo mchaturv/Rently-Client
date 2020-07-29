@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+  }
+
 .catalogue-container
 {
     font-family: playfair display;
@@ -17,7 +21,8 @@
     width: 100%;
     margin-top: 20px;
     visibility: 30%;
-    padding: 27px 48px 31px;
+    height: 250px;
+    /* padding: 27px 48px 31px; */
     background: rgb(110, 64, 145);
     border: 1px solid #a100ff;
     box-shadow: 3px 5px 20px 2px rgb(152, 120, 177);
@@ -135,4 +140,9 @@ h1.property-title {
   
   #topBtn:hover {
     background-color: #555;
+  }
+
+  .gm-style-iw .gm-style-iw-c
+  {
+      display: none
   }
