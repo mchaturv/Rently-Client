@@ -12,6 +12,7 @@ import DateRangeIcon from "@material-ui/icons/DateRange";
 import IconButton from "@material-ui/core/IconButton";
 import { Modal } from "@material-ui/core";
 import MaterialModal from "../components/MaterialModal";
+import * as DateFile from "../components/DateComponent";
 import DateComponent from "../components/DateComponent";
 
 class PostAd extends Component {
@@ -38,6 +39,10 @@ class PostAd extends Component {
     };
   }
   formValidateFunction(trigger) {
+    // console.log(DateFile.selectedDates);
+    // console.log(DateFile.fromTime);
+    // console.log(DateFile.toTime);
+
     if (trigger) {
       this.setState({ formValidate: true });
     }

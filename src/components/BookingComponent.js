@@ -17,6 +17,8 @@ import MultipleDatesPicker from "@randex/material-ui-multiple-dates-picker";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
+import * as PropertyDetails from "../Property/propertydetails";
+import { appointmentService } from "../services/appointment.service";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -59,10 +61,30 @@ const BookingComponent = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("selected slot", selectedSlot);
-    handleClose();
+    if (selectedSlot.length == 0) {
+      alert("Please select the time slot");
+    } else {
+      let user = JSON.parse(localStorage.getItem("user"));
 
-    //call booking api
+      if (user != null) {
+        console.log("token: " + user.token);
+        var jwt = require("jsonwebtoken");
+
+        var userId = jwt.decode(user.token).sub;
+
+        appointmentService
+          .makeAppointment(PropertyDetails.propertyId, userId, selectedSlot)
+          .then(
+            () => {
+              alert("Appointment booked for this property!");
+            },
+            (error) => alert(error)
+          );
+      } else {
+        alert("You need to login to make an appointment!");
+      }
+    }
+    handleClose();
   };
 
   const [slot, setSlot] = React.useState("");
@@ -96,11 +118,11 @@ const BookingComponent = (props) => {
             value={slot}
             onChange={handleChange}
           >
-            <MenuItem value={10}>
-              07:30 to 08:3007:30 to 08:3007:30 to 08:30
+            <MenuItem value={"Mon Aug 03 2020, 07:30 to 10:30"}>
+              Mon Aug 03 2020, 07:30 to 10:30
             </MenuItem>
-            <MenuItem value={20}>
-              07:30 to 08:3007:30 to 08:3007:30 to 08:30
+            <MenuItem value={"Tue Aug 04 2020, 07:30 to 10:30"}>
+              Tue Aug 04 2020, 07:30 to 10:30
             </MenuItem>
             <MenuItem value={30}>
               07:30 to 08:3007:30 to 08:3007:30 to 08:30

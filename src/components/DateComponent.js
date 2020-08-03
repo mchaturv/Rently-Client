@@ -38,9 +38,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-var selectedDates = [];
-var fromTime = "07:30";
-var toTime = "08:30";
+export var selectedDates = [];
+export var fromTime = "07:30";
+export var toTime = "08:30";
 
 const DateComponent = (props) => {
   const classes = useStyles();
@@ -63,6 +63,7 @@ const DateComponent = (props) => {
     console.log("Selected dates= " + selectedDates);
     console.log("Selected time= " + fromTime + " to " + toTime);
     handleClose();
+    // create visit hours table with propertyid
     // call api to add time hours to database
   };
 
@@ -178,5 +179,4 @@ const DateComponent = (props) => {
     </div>
   );
 };
-
 export default DateComponent;

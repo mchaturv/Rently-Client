@@ -48,11 +48,6 @@ const Header = (props) => {
         <AccountCircleIcon fontSize={"large"} />
       </IconButton>
     </LoginModal>
-    // <BookingComponent>
-    //   <IconButton>
-    //     <AccountCircleIcon fontSize={"large"} />
-    //   </IconButton>
-    // </BookingComponent>
   );
 
   const registerState = localStorage.getItem("user") ? (
