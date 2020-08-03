@@ -118,14 +118,14 @@ const BookingComponent = (props) => {
             value={slot}
             onChange={handleChange}
           >
-            <MenuItem value={"Mon Aug 03 2020, 07:30 to 10:30"}>
-              Mon Aug 03 2020, 07:30 to 10:30
+            <MenuItem value={"Fri Aug 07 2020, 07:30 to 10:30"}>
+              Fri Aug 07 2020, 07:30 to 10:30
             </MenuItem>
-            <MenuItem value={"Tue Aug 04 2020, 07:30 to 10:30"}>
-              Tue Aug 04 2020, 07:30 to 10:30
+            <MenuItem value={"Sat Aug 08 2020, 07:30 to 10:30"}>
+              Sat Aug 08 2020, 07:30 to 10:30
             </MenuItem>
-            <MenuItem value={30}>
-              07:30 to 08:3007:30 to 08:3007:30 to 08:30
+            <MenuItem value={"Sun Aug 09 2020, 07:30 to 10:30"}>
+              Sun Aug 09 2020, 07:30 to 10:30
             </MenuItem>
           </Select>
 

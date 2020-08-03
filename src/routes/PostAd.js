@@ -39,9 +39,7 @@ class PostAd extends Component {
     };
   }
   formValidateFunction(trigger) {
-    // console.log(DateFile.selectedDates);
-    // console.log(DateFile.fromTime);
-    // console.log(DateFile.toTime);
+    console.log(DateFile.timeSlots);
 
     if (trigger) {
       this.setState({ formValidate: true });

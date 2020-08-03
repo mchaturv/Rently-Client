@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 export var selectedDates = [];
 export var fromTime = "07:30";
 export var toTime = "08:30";
+export var timeSlots = [];
 
 const DateComponent = (props) => {
   const classes = useStyles();
@@ -60,11 +61,13 @@ const DateComponent = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Selected dates= " + selectedDates);
-    console.log("Selected time= " + fromTime + " to " + toTime);
+    var date;
+    for (date of selectedDates) {
+      var slot =
+        date.toString().substr(0, 15) + ", " + fromTime + " to " + toTime;
+      timeSlots.push(slot);
+    }
     handleClose();
-    // create visit hours table with propertyid
-    // call api to add time hours to database
   };
 
   const handleFromTimeChange = (e) => {
