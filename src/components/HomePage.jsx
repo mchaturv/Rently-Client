@@ -1,3 +1,5 @@
+// Author - Vikram Singh (vikram.singh@dal.ca)
+
 import React from "react";
 import { Link } from "react-router-dom";
 
