@@ -65,6 +65,14 @@ const MaterialSelect = (props) => {
                             <option value={30}>Singapore</option>
                         </React.Fragment>
                 }
+                {
+                    props.text=="Type" &&
+                    <React.Fragment>
+                        <option value={30}>Apartment</option>
+                        <option value={40}>Villa</option>
+                        <option value={50}>Condo</option>
+                    </React.Fragment>
+                }
             </Select>
         </FormControl>
     )

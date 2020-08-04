@@ -18,28 +18,29 @@ import Homepage from "./Home/home";
 import PostAd from "./routes/PostAd";
 import FAQ from "./routes/FAQ";
 import PropertyCatalogue from "./Property/propertycatalogue";
-import Propertydetails from "./Property/propertydetails"
+import favourite from "./Property/favourite"
+
 
 
 
 const theme = createMuiTheme({
-    overrides:{
-        spacing: 4
+  overrides: {
+    spacing: 4,
+  },
+  palette: {
+    primary: {
+      main: "#995fc5",
     },
-    palette: {
-        primary: {
-            main: '#995fc5'
-        },
-        secondary: {
-            main: '#f5f5f5'
-        }
+    secondary: {
+      main: "#f5f5f5",
     },
+  },
 });
 
 function App() {
-    return (
-        <ThemeProvider theme={theme}>
-        <main>
+  return (
+    <ThemeProvider theme={theme}>
+      <main>
         <BrowserRouter>
         <Switch>
                 <Route path="/userprofile" component={UserProfile} exact />
@@ -47,11 +48,12 @@ function App() {
                 <Route path="/properties" component={PropertyCatalogue} exact/>
                 <Route path="/postad" component={PostAd} exact/>
                 <Route path="/faq" component={FAQ} exact/>
+                <Route path="/favourite" component={favourite} exact/>
         </Switch>
         </BrowserRouter>
-        </main>
-        </ThemeProvider>
-    )
+      </main>
+    </ThemeProvider>
+  );
 }
 
 export default App;
