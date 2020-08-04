@@ -1,3 +1,5 @@
+// Author - Vikram Singh (vikram.singh@dal.ca)
+
 import React, { Component } from 'react';
 import '../App.css';
 import { makeStyles } from '@material-ui/core/styles';

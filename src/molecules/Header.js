@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import Logo from "../images/rentlyLogo.png";
 import MaterialInput from "../components/MaterialInput";
+import Notifications from "../components/Notifications";
 import Labels from "../labels";
 import MaterialButton from "../components/MaterialButton";
 import MaterialPaper from "../components/MaterialPaper";
@@ -69,13 +70,13 @@ const Header = (props) => {
     </RegisterModal>
   );
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    const handleClick = (event) => {
+      setAnchorEl(event.currentTarget);
+    };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
 
   return (
     <MaterialPaper paddingRight={3}>
@@ -123,77 +124,49 @@ const Header = (props) => {
           </Box>
 
           {localStorage.getItem("user") ? (
-            <Box>
-              <PopupState variant="popper" popupId="notification_popper">
-                {(popupState) => (
-                  <ClickAwayListener onClickAway={popupState.close}>
-                    <div>
-                      <IconButton
-                        {...bindToggle(popupState)}
-                        onClick={handleClick}
-                      >
-                        <ListIcon fontSize={"large"} />
-                      </IconButton>
-
-                      <Menu
-                        id="customized-menu"
-                        anchorEl={anchorEl}
-                        keepMounted
-                        open={Boolean(anchorEl)}
-                        onClose={handleClose}
-                      >
-                        <MenuItem onClick={() => history.push("/favourite")}>
-                          <ListItemIcon color="primary">
-                            <FavoriteIcon fontSize="small" />
-                          </ListItemIcon>
-                          <ListItemText primary="Favourites" />
-                        </MenuItem>
-                        <MenuItem>
-                          <ListItemIcon>
-                            <IconButton fontSize="small" />
-                          </ListItemIcon>
-                          <ListItemText primary="other goes here" />
-                        </MenuItem>
-                      </Menu>
-                    </div>
-                  </ClickAwayListener>
-                )}
-              </PopupState>
-            </Box>
-          ) : (
-            <></>
-          )}
 
           <Box>
             <PopupState variant="popper" popupId="notification_popper">
               {(popupState) => (
                 <ClickAwayListener onClickAway={popupState.close}>
                   <div>
-                    <IconButton {...bindToggle(popupState)}>
-                      <NotificationsIcon fontSize={"large"} />
+                  <IconButton {...bindToggle(popupState)} onClick={handleClick}>
+                      <ListIcon fontSize={"large"} />
                     </IconButton>
 
-                    <Popper {...bindPopper(popupState)} transition>
-                      {({ TransitionProps }) => (
-                        <Fade {...TransitionProps} timeout={350}>
-                          <Paper>
-                            <MaterialTypography
-                              variant={"subtitle1"}
-                              text={"Notifications go here"}
-                            ></MaterialTypography>
-                            <Skeleton />
-                            <Skeleton />
-                            <Skeleton />
-                            <Skeleton />
-                            <Skeleton />
-                          </Paper>
-                        </Fade>
-                      )}
-                    </Popper>
-                  </div>
+                    <Menu
+                      id="customized-menu"
+                      anchorEl={anchorEl}
+                      keepMounted
+                      open={Boolean(anchorEl)}
+                      onClose={handleClose}
+                    >
+                      <MenuItem onClick={() => history.push('/favourite')}>
+                        <ListItemIcon color = "primary">
+                          <FavoriteIcon  fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="Favourites" />
+                      </MenuItem>
+                      <MenuItem>
+                        <ListItemIcon >
+                          <IconButton  fontSize="small" />
+                        </ListItemIcon>
+                        <ListItemText primary="other goes here" />
+                      </MenuItem>
+
+                  </Menu>
+                </div>
+
                 </ClickAwayListener>
               )}
             </PopupState>
+          </Box>
+
+          ):(<></>)
+          }
+
+          <Box>
+            <Notifications/>
           </Box>
         </Box>
       )}

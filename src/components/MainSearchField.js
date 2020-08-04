@@ -1,3 +1,5 @@
+// Author - Vikram Singh (vikram.singh@dal.ca)
+
 import AutoSuggest from 'react-autosuggest';
 import React, {useEffect, useState} from "react";
 import IconButton from "@material-ui/core/IconButton";
