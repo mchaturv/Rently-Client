@@ -189,6 +189,9 @@ class PostAd extends Component {
                         formValidate={this.state.formValidate}
                       ></MaterialInput>
                     </Grid>
+                                                            <Grid item xs={9}>
+                                            <MaterialInput text={"Insert Image Url"} marginTop={3} formValidate={this.state.formValidate}></MaterialInput>
+                                        </Grid>
                   </Grid>
                 </Grid>
               </Grid>
