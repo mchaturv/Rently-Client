@@ -34,6 +34,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { useHistory } from "react-router-dom";
+import AddIcon from '@material-ui/icons/Add';
 
 const Header = (props) => {
   const [formValidate, setFormValidate] = useState(false);
@@ -85,6 +86,13 @@ const Header = (props) => {
         <Box display="flex" p={1}>
           <Box p={1} flexGrow={1} >
             <img src={Logo} width={160} style={{cursor:"pointer"}} onClick={() => history.push('/')}/>
+          </Box>
+          <Box>
+            <Link to="/postad">
+                 <Button size="large" style={{ height: "100%", fontSize: "large" }}>
+                        <AddOutlinedIcon fontSize={"Large"}></AddOutlinedIcon>
+                </Button>
+            </Link>
           </Box>
           <Box>
             <Link to="/faq">
