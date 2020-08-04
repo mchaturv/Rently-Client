@@ -15,8 +15,14 @@ const CustomButton = withStyles({
 })(Button);
 
 const MaterialButton = (props) => {
+    let variant = props.variant || "contained";
+    let callbackObject = props.callbackObject || {};
     return (
-        <CustomButton variant="contained" color="primary" onClick={()=>{props.callback(true)}}>{props.text}</CustomButton>
+        <React.Fragment>
+            {
+                <CustomButton variant={variant} color="primary" onClick={()=>{props.callback(true, callbackObject)}}>{props.text}</CustomButton>
+            }
+        </React.Fragment>
     )
 };
 

@@ -17,7 +17,7 @@ function makeAppointment(propertyId, userId, timeSlot) {
       body: JSON.stringify({ propertyId, userId, timeSlot }),
     };
     return fetch(
-      `https://rently-services-group13.herokuapp.com/api/appointments/add-appointment`,
+      `${process.env.REACT_APP_API_URL}/appointments/add-appointment`,
       requestOptions
     )
       .then(handleResponse)

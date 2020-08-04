@@ -23,8 +23,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    marginTop: theme.spacing(8),
+    alignItems: "center"
   },
   form: {
     width: "100%", // Fix IE 11 issue.

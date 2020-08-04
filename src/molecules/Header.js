@@ -1,3 +1,5 @@
+// Author - Vikram Singh (vikram.singh@dal.ca)
+
 import {
   Grid,
   Popper,
@@ -40,6 +42,8 @@ import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
 const Header = (props) => {
   const [formValidate, setFormValidate] = useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
+
+
   const formValidateFunction = (trigger) => {
     if (trigger) {
       setFormValidate(true);
@@ -174,9 +178,12 @@ const Header = (props) => {
           ):(<></>)
           }
 
-          <Box>
-            <Notifications/>
-          </Box>
+          {
+            localStorage.getItem("user") &&
+            <Box>
+              <Notifications/>
+            </Box>
+          }
         </Box>
       )}
       {props.userPage && (

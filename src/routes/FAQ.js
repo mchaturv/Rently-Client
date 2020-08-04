@@ -1,3 +1,5 @@
+// Author - Vikram Singh (vikram.singh@dal.ca)
+
 import React, {Component} from "react";
 import Grid from "@material-ui/core/Grid";
 import Header from "../molecules/Header";
