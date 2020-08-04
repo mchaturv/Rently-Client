@@ -7,7 +7,6 @@ import Header from '../molecules/Header'
 import { withGoogleMap, GoogleMap, withScriptjs, InfoWindow, Marker } from "react-google-maps";
 import Autocomplete from 'react-google-autocomplete';
 import Geocode from "react-geocode";
-import axios from 'axios';
 
 class Home extends React.Component {
 
@@ -15,9 +14,6 @@ class Home extends React.Component {
     super(props);
     this.state = {
       address: '',
-      city: '',
-      area: '',
-      state: '',
       mapPosition: {
         lat: 43.691351,
         lng: -79.458748
@@ -45,76 +41,22 @@ class Home extends React.Component {
     Geocode.fromLatLng(this.state.mapPosition.lat, this.state.mapPosition.lng).then(
       response => {
         const address = response.results[0].formatted_address,
-          addressArray = response.results[0].address_components,
-          city = this.getCity(addressArray),
-          area = this.getArea(addressArray),
-          state = this.getState(addressArray);
+          addressArray = response.results[0].address_components;
+       
 
         this.setState({
-          address: (address) ? address : '',
-          area: (area) ? area : '',
-          city: (city) ? city : '',
-          state: (state) ? state : '',
+          address: (address) ? address : ''
+          
         })
       },
       error => {
-        console.error(error);
+        //console.error(error);
       }
     );
-   // this.searchPropertyForCurrentLocation();
+   
   }
 
-  /**
-  * Get the city and set the city input value to the one selected
-  *
-  * @param addressArray
-  * @return {string}
-  */
-  getCity = (addressArray) => {
-    let city = '';
-    for (let i = 0; i < addressArray.length; i++) {
-      if (addressArray[i].types[0] && 'administrative_area_level_2' === addressArray[i].types[0]) {
-        city = addressArray[i].long_name;
-        return city;
-      }
-    }
-  };
-  /**
-  * Get the area and set the area input value to the one selected
-  *
-  * @param addressArray
-  * @return {string}
-  */
-  getArea = (addressArray) => {
-    let area = '';
-    for (let i = 0; i < addressArray.length; i++) {
-      if (addressArray[i].types[0]) {
-        for (let j = 0; j < addressArray[i].types.length; j++) {
-          if ('sublocality_level_1' === addressArray[i].types[j] || 'locality' === addressArray[i].types[j]) {
-            area = addressArray[i].long_name;
-            return area;
-          }
-        }
-      }
-    }
-  };
-  /**
-  * Get the address and set the address input value to the one selected
-  *
-  * @param addressArray
-  * @return {string}
-  */
-  getState = (addressArray) => {
-    let state = '';
-    for (let i = 0; i < addressArray.length; i++) {
-      for (let i = 0; i < addressArray.length; i++) {
-        if (addressArray[i].types[0] && 'administrative_area_level_1' === addressArray[i].types[0]) {
-          state = addressArray[i].long_name;
-          return state;
-        }
-      }
-    }
-  };
+  
   
   onMarkerClick = (props, marker, e) => {
     this.setState({
@@ -130,17 +72,13 @@ class Home extends React.Component {
   onPlaceSelected = (place) => {
     const address = place.formatted_address,
       addressArray = place.address_components,
-      city = this.getCity(addressArray),
-      area = this.getArea(addressArray),
-      state = this.getState(addressArray),
+      
       latValue = place.geometry.location.lat(),
       lngValue = place.geometry.location.lng();
     // Set these values in the state.
     this.setState({
       address: (address) ? address : '',
-      area: (area) ? area : '',
-      city: (city) ? city : '',
-      state: (state) ? state : '',
+      
       markerPosition: {
         lat: latValue,
         lng: lngValue
@@ -162,8 +100,6 @@ class Home extends React.Component {
 
 
   handleModalOpen =() => {
-    console.log("here to search ");
-    console.log(this.state.searchstate);
     
     this.props.history.push({
       pathname: '/properties',

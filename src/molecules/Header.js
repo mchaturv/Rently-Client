@@ -25,16 +25,25 @@ import LogoutModal from "../components/LogoutModal";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import ListIcon from "@material-ui/icons/List";
 import Divider from "@material-ui/core/Divider";
-import BookingComponent from "../components/BookingComponent";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import { useHistory } from "react-router-dom";
 
 const Header = (props) => {
   const [formValidate, setFormValidate] = useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const formValidateFunction = (trigger) => {
     if (trigger) {
       setFormValidate(true);
     }
   };
+
+  const history = useHistory();
 
   const loginState = localStorage.getItem("user") ? (
     <LogoutModal>
@@ -60,12 +69,25 @@ const Header = (props) => {
     </RegisterModal>
   );
 
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <MaterialPaper paddingRight={3}>
       {!props.userPage && (
         <Box display="flex" p={1}>
           <Box p={1} flexGrow={1}>
-            <img src={Logo} width={160} />
+            <img
+              src={Logo}
+              width={160}
+              style={{ cursor: "pointer" }}
+              onClick={() => history.push("/")}
+            />
           </Box>
           <Box>
             <Link to="/faq">
@@ -99,6 +121,49 @@ const Header = (props) => {
               )}
             </PopupState>
           </Box>
+
+          {localStorage.getItem("user") ? (
+            <Box>
+              <PopupState variant="popper" popupId="notification_popper">
+                {(popupState) => (
+                  <ClickAwayListener onClickAway={popupState.close}>
+                    <div>
+                      <IconButton
+                        {...bindToggle(popupState)}
+                        onClick={handleClick}
+                      >
+                        <ListIcon fontSize={"large"} />
+                      </IconButton>
+
+                      <Menu
+                        id="customized-menu"
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+                      >
+                        <MenuItem onClick={() => history.push("/favourite")}>
+                          <ListItemIcon color="primary">
+                            <FavoriteIcon fontSize="small" />
+                          </ListItemIcon>
+                          <ListItemText primary="Favourites" />
+                        </MenuItem>
+                        <MenuItem>
+                          <ListItemIcon>
+                            <IconButton fontSize="small" />
+                          </ListItemIcon>
+                          <ListItemText primary="other goes here" />
+                        </MenuItem>
+                      </Menu>
+                    </div>
+                  </ClickAwayListener>
+                )}
+              </PopupState>
+            </Box>
+          ) : (
+            <></>
+          )}
+
           <Box>
             <PopupState variant="popper" popupId="notification_popper">
               {(popupState) => (
