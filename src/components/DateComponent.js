@@ -13,6 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { userService } from "../services/user.service";
 import { useLocation, useHistory } from "react-router-dom";
+import MultipleDatesPicker from "@randex/material-ui-multiple-dates-picker";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -37,11 +38,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LoginModal = (props) => {
+export var selectedDates = [];
+export var fromTime = "07:30";
+export var toTime = "08:30";
+export var timeSlots = [];
+
+const DateComponent = (props) => {
   const classes = useStyles();
   const location = useLocation();
   const history = useHistory();
   const [open, setOpen] = React.useState(false);
+
+  const [dateopen, setDateOpen] = React.useState(false);
 
   const handleOpen = () => {
     setOpen(true);
@@ -53,17 +61,28 @@ const LoginModal = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    var date;
+    for (date of selectedDates) {
+      var slot =
+        date.toString().substr(0, 15) + ", " + fromTime + " to " + toTime;
+      timeSlots.push(slot);
+    }
     handleClose();
-    userService.login(e.target.email.value, e.target.password.value).then(
-      () => {
-        // const { from } = location.state || {
-        //   from: { pathname: "/" },
-        // };
-        // history.push(from);
-        window.location.reload(true);
-      },
-      (error) => alert(error)
-    );
+  };
+
+  const handleFromTimeChange = (e) => {
+    console.log("From time: " + e.target.value);
+    fromTime = e.target.value;
+  };
+  const handleToTimeChange = (e) => {
+    console.log("To time: " + e.target.value);
+    toTime = e.target.value;
+  };
+
+  const handleDateSubmit = (dates) => {
+    console.log("selected dates", dates);
+    selectedDates = dates;
+    setDateOpen(false);
   };
 
   const body = (
@@ -71,7 +90,7 @@ const LoginModal = (props) => {
       <CssBaseline />
       <div className={classes.paper}>
         <Typography component="h1" variant="h5">
-          Login
+          Set Visit Hours
         </Typography>
         <form
           className={classes.form}
@@ -79,33 +98,59 @@ const LoginModal = (props) => {
             handleSubmit(e);
           }}
         >
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
+          <Button
             fullWidth
-            id="email"
-            label="Email Address"
-            type="email"
-            name="email"
-            autoComplete="email"
-            autoFocus
+            variant="contained"
+            color="primary"
+            onClick={() => setDateOpen(!dateopen)}
+            className={classes.submit}
+          >
+            Select Dates
+          </Button>
+
+          <MultipleDatesPicker
+            open={dateopen}
+            selectedDates={selectedDates}
+            onCancel={() => setDateOpen(false)}
+            onSubmit={(dates) => handleDateSubmit(dates)}
           />
+
+          <Typography component="h3">Set Hours</Typography>
+
           <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
+            id="time"
+            label="From"
+            type="time"
+            defaultValue={fromTime}
+            onChange={(e) => {
+              handleFromTimeChange(e);
+            }}
+            className={classes.textField}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            inputProps={{
+              step: 300, // 5 min
+            }}
           />
-          <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
+
+          <TextField
+            id="time"
+            label="To"
+            type="time"
+            defaultValue={toTime}
+            className={classes.textField}
+            onChange={(e) => {
+              handleToTimeChange(e);
+            }}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            inputProps={{
+              step: 300, // 5 min
+            }}
           />
+
           <Button
             type="submit"
             fullWidth
@@ -113,7 +158,7 @@ const LoginModal = (props) => {
             color="primary"
             className={classes.submit}
           >
-            Login
+            Set
           </Button>
           <Grid container>
             <Grid item></Grid>
@@ -137,5 +182,4 @@ const LoginModal = (props) => {
     </div>
   );
 };
-
-export default LoginModal;
+export default DateComponent;

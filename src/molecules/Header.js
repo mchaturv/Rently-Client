@@ -26,13 +26,13 @@ import LogoutModal from "../components/LogoutModal";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
-import ListIcon from '@material-ui/icons/List';
+import ListIcon from "@material-ui/icons/List";
 import Divider from "@material-ui/core/Divider";
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import FavoriteIcon from "@material-ui/icons/Favorite";
 import { useHistory } from "react-router-dom";
 import AddIcon from '@material-ui/icons/Add';
 import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
@@ -44,7 +44,6 @@ const Header = (props) => {
     if (trigger) {
       setFormValidate(true);
     }
-
   };
 
   const history = useHistory();
@@ -56,22 +55,22 @@ const Header = (props) => {
       </IconButton>
     </LogoutModal>
   ) : (
-      <LoginModal>
-        <IconButton>
-          <AccountCircleIcon fontSize={"large"} />
-        </IconButton>
-      </LoginModal>
-    );
+    <LoginModal>
+      <IconButton>
+        <AccountCircleIcon fontSize={"large"} />
+      </IconButton>
+    </LoginModal>
+  );
 
   const registerState = localStorage.getItem("user") ? (
     <></>
   ) : (
-      <RegisterModal>
-        <IconButton>
-          <PersonAddIcon fontSize={"large"} />
-        </IconButton>
-      </RegisterModal>
-    );
+    <RegisterModal>
+      <IconButton>
+        <PersonAddIcon fontSize={"large"} />
+      </IconButton>
+    </RegisterModal>
+  );
 
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
@@ -85,8 +84,13 @@ const Header = (props) => {
     <MaterialPaper paddingRight={3}>
       {!props.userPage && (
         <Box display="flex" p={1}>
-          <Box p={1} flexGrow={1} >
-            <img src={Logo} width={160} style={{cursor:"pointer"}} onClick={() => history.push('/')}/>
+          <Box p={1} flexGrow={1}>
+            <img
+              src={Logo}
+              width={160}
+              style={{ cursor: "pointer" }}
+              onClick={() => history.push("/")}
+            />
           </Box>
           <Box>
             <Link to="/postad">
@@ -97,7 +101,10 @@ const Header = (props) => {
           </Box>
           <Box>
             <Link to="/faq">
-              <Button size="large" style={{ height: "100%", fontSize: "large" }}>
+              <Button
+                size="large"
+                style={{ height: "100%", fontSize: "large" }}
+              >
                 FAQ
               </Button>
             </Link>
