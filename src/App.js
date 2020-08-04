@@ -18,7 +18,8 @@ import Homepage from "./Home/home";
 import PostAd from "./routes/PostAd";
 import FAQ from "./routes/FAQ";
 import PropertyCatalogue from "./Property/propertycatalogue";
-import Propertydetails from "./Property/propertydetails"
+import favourite from "./Property/favourite"
+
 
 
 
@@ -47,6 +48,7 @@ function App() {
                 <Route path="/properties" component={PropertyCatalogue} exact/>
                 <Route path="/postad" component={PostAd} exact/>
                 <Route path="/faq" component={FAQ} exact/>
+                <Route path="/favourite" component={favourite} exact/>
         </Switch>
         </BrowserRouter>
       </main>
