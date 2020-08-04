@@ -10,7 +10,6 @@ import Modal from './ModalSetup';
 import 'react-fontawesome'
 
 
-//var api = process.env.REACT_APP_API_URL + "/favourite";
 var api = "https://rently-services-group13.herokuapp.com/api/favourite";
 
 class Favourite extends Component {
@@ -153,7 +152,7 @@ class Favourite extends Component {
           <div className="container">
             <div className="row">
               <div className="search-container-fav">
-                    <h1 style={{textAlign:"center"}}>Favourite properties</h1>
+                    <h1 style={{textAlign:"center"}}>Favourite Properties</h1>
               </div>
             </div>
           </div>

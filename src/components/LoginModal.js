@@ -56,10 +56,11 @@ const LoginModal = (props) => {
     handleClose();
     userService.login(e.target.email.value, e.target.password.value).then(
       () => {
-        const { from } = location.state || {
-          from: { pathname: "/" },
-        };
-        history.push(from);
+        // const { from } = location.state || {
+        //   from: { pathname: "/" },
+        // };
+        // history.push(from);
+        window.location.reload(true);
       },
       (error) => alert(error)
     );

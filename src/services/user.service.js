@@ -13,8 +13,7 @@ function login(email, password) {
   };
 
   return fetch(
-    `http://localhost:3100/api/users/authenticate`,
-    //`https://rently-services-group13.herokuapp.com/api/users/authenticate`,
+    `https://rently-services-group13.herokuapp.com/api/users/authenticate`,
     requestOptions
   )
     .then(handleResponse)

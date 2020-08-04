@@ -7,7 +7,7 @@ var propertyDetails;
 
 
 Geocode.setApiKey("AIzaSyBTOah98FDMQHJVNk7oRe_kjKdZ_XYIUd4");
-Geocode.enableDebug();
+
 
 class PropertyDetails extends React.Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class PropertyDetails extends React.Component {
                 this.address = response.results[0].formatted_address
             },
             error => {
-                console.error(error);
+                //console.error(error);
             }
         );
     }
@@ -59,7 +59,6 @@ class PropertyDetails extends React.Component {
                 )
             )
         );
-        console.log(propertyDetails);
         return (
 
             <Fragment>

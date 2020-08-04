@@ -102,7 +102,7 @@ class PropertyCatalogue extends Component {
                 }
               },
               ()=>{
-                this.searchPropertyForCurrentLocation(userlat,userlng);
+                this.searchPropertyForLocation();
               })
            },
            (error) => 
@@ -277,7 +277,6 @@ class PropertyCatalogue extends Component {
         "Content-Type": "application/json",
         "Authorization": "Bearer " +auth.token
         },
-       // body: JSON.stringify({ property})
     };
     axios.post(favapi,property, requestOptions).then(response => {
       var searchResult = response.data;
