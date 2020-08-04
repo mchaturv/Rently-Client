@@ -9,6 +9,7 @@ class PropertyCard extends React.Component {
         this.state = {
         isShowing: false,
         fav:false
+
         }
         if(this.props.favProperties.includes(this.props.property._id))
         {
@@ -31,11 +32,16 @@ class PropertyCard extends React.Component {
     }
 
     componentWillReceiveProps(props) {
-        console.log("in child",props);
-        if(this.props.favProperties.includes(this.props.property._id))
+        if(props.favProperties.includes(props.property._id))
         {
             this.setState({
                 fav: true
+            })
+        }
+        else
+        {
+            this.setState({
+                fav: false
             })
         }
         
