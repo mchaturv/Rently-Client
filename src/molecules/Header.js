@@ -35,6 +35,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { useHistory } from "react-router-dom";
 import AddIcon from '@material-ui/icons/Add';
+import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
 
 const Header = (props) => {
   const [formValidate, setFormValidate] = useState(false);
