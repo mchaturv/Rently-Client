@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import Logo from "../images/rentlyLogo.png";
 import MaterialInput from "../components/MaterialInput";
+import Notifications from "../components/Notifications";
 import Labels from "../labels";
 import MaterialButton from "../components/MaterialButton";
 import MaterialPaper from "../components/MaterialPaper";
@@ -41,7 +42,7 @@ const Header = (props) => {
     if (trigger) {
       setFormValidate(true);
     }
-  
+
   };
 
   const history = useHistory();
@@ -73,7 +74,7 @@ const Header = (props) => {
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
     };
-  
+
     const handleClose = () => {
       setAnchorEl(null);
     };
@@ -114,9 +115,9 @@ const Header = (props) => {
               )}
             </PopupState>
           </Box>
-              
+
           {localStorage.getItem("user") ? (
-          
+
           <Box>
             <PopupState variant="popper" popupId="notification_popper">
               {(popupState) => (
@@ -145,48 +146,20 @@ const Header = (props) => {
                         </ListItemIcon>
                         <ListItemText primary="other goes here" />
                       </MenuItem>
-                    
+
                   </Menu>
                 </div>
-                
+
                 </ClickAwayListener>
               )}
             </PopupState>
           </Box>
-        
+
           ):(<></>)
           }
 
           <Box>
-            <PopupState variant="popper" popupId="notification_popper">
-              {(popupState) => (
-                <ClickAwayListener onClickAway={popupState.close}>
-                  <div>
-                    <IconButton {...bindToggle(popupState)}>
-                      <NotificationsIcon fontSize={"large"} />
-                    </IconButton>
-
-                    <Popper {...bindPopper(popupState)} transition>
-                      {({ TransitionProps }) => (
-                        <Fade {...TransitionProps} timeout={350}>
-                          <Paper>
-                            <MaterialTypography
-                              variant={"subtitle1"}
-                              text={"Notifications go here"}
-                            ></MaterialTypography>
-                            <Skeleton />
-                            <Skeleton />
-                            <Skeleton />
-                            <Skeleton />
-                            <Skeleton />
-                          </Paper>
-                        </Fade>
-                      )}
-                    </Popper>
-                  </div>
-                </ClickAwayListener>
-              )}
-            </PopupState>
+            <Notifications/>
           </Box>
         </Box>
       )}
