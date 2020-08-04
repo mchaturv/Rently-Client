@@ -13,7 +13,6 @@ function login(email, password) {
   };
 
   return fetch(
-   
     `https://rently-services-group13.herokuapp.com/api/users/authenticate`,
     requestOptions
   )

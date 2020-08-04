@@ -40,24 +40,18 @@ class Home extends React.Component {
     }
     Geocode.fromLatLng(this.state.mapPosition.lat, this.state.mapPosition.lng).then(
       response => {
-        const address = response.results[0].formatted_address,
-          addressArray = response.results[0].address_components;
-       
-
+        const address = response.results[0].formatted_address
         this.setState({
           address: (address) ? address : ''
-          
         })
       },
       error => {
-        //console.error(error);
+      console.error(error);
       }
     );
    
   }
 
-  
-  
   onMarkerClick = (props, marker, e) => {
     this.setState({
       selectedPlace: props.place_,
@@ -67,18 +61,13 @@ class Home extends React.Component {
     });
   };
 
-  
 
   onPlaceSelected = (place) => {
     const address = place.formatted_address,
-      addressArray = place.address_components,
-      
       latValue = place.geometry.location.lat(),
       lngValue = place.geometry.location.lng();
     // Set these values in the state.
     this.setState({
-      address: (address) ? address : '',
-      
       markerPosition: {
         lat: latValue,
         lng: lngValue
@@ -94,13 +83,12 @@ class Home extends React.Component {
       }
     },
       () => {
-          this.handleModalOpen();
+          this.redirectToProperties();
       });
     }
 
 
-  handleModalOpen =() => {
-    
+  redirectToProperties =() => {
     this.props.history.push({
       pathname: '/properties',
       state: {searchdetails : this.state.searchstate}
@@ -124,27 +112,11 @@ class Home extends React.Component {
                 fontStyle: 'italic',
                 border: 'none'
               }}
-              placeholder="search with city or postal code"
+              placeholder="Search with city or postal code"
               onPlaceSelected={this.onPlaceSelected}
               types={['(regions)']}
             />
-            {/*Marker*/}
-            <Marker google={this.props.google}
-              name={'Dolores park'}
-              draggable={true}
-              onDragEnd={this.onMarkerDragEnd}
-              position={{ lat: this.state.markerPosition.lat, lng: this.state.markerPosition.lng }}
-            />
-            <Marker />
-            {/* InfoWindow on top of marker */}
-            <InfoWindow
-              onClose={this.onInfoWindowClose}
-              position={{ lat: (this.state.markerPosition.lat + 0.0018), lng: this.state.markerPosition.lng }}
-            >
-              <div>
-                <span style={{ padding: 0, margin: 0 }}>{this.state.address}</span>
-              </div>
-            </InfoWindow>
+            
           </GoogleMap>
         )
       )

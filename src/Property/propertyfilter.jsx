@@ -79,7 +79,7 @@ class PropertyFilter extends React.Component {
                     </div>
                     <form onSubmit={this.mySubmitHandler} className="filter-form">
 
-                        <select className="form-control select-filter" name="propertyType" value={this.state.propertyType} placeholder="Type" id="exampleFormControlSelect1" onChange={this.myChangeHandler}>
+                        <select className="form-control select-filter" name="propertyType" value={this.state.propertyType} placeholder="Type" id="propertyType" onChange={this.myChangeHandler}>
                             <option>Property Type</option>
                             <option>Apartment</option>
                             <option>Villa</option>
@@ -87,7 +87,7 @@ class PropertyFilter extends React.Component {
                             <option>Farm House</option>
                         </select>
 
-                        <select className="form-control select-filter" name="bedroom" value={this.state.bedroom} placeholder="Bedroom" id="exampleFormControlSelect1" onChange={this.myChangeHandler}>
+                        <select className="form-control select-filter" name="bedroom" value={this.state.bedroom} placeholder="Bedroom" id="bedroom" onChange={this.myChangeHandler}>
                             <option value="0">Bedroom</option>
                             <option value="1">1 Bedroom</option>
                             <option value="2">2 Bedroom</option>
@@ -95,7 +95,7 @@ class PropertyFilter extends React.Component {
                             <option value="4">4 and more Bedroom</option>
                         </select>
 
-                        <select className="form-control select-filter" name="bathroom" value={this.state.bathroom} placeholder="Bathroom" id="exampleFormControlSelect1" onChange={this.myChangeHandler}>
+                        <select className="form-control select-filter" name="bathroom" value={this.state.bathroom} placeholder="bathroom" id="exampleFormControlSelect1" onChange={this.myChangeHandler}>
                             <option value="0">Bathroom</option>
                             <option value="1">1 Bathroom</option>
                             <option value="2">2 Bathroom</option>

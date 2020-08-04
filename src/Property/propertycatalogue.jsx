@@ -108,13 +108,13 @@ class PropertyCatalogue extends Component {
                   lng: userlng,
                 },
               },
-              () => {
-                this.searchPropertyForCurrentLocation(userlat, userlng);
-              }
-            );
-          },
-          (error) => this.searchPropertyForLocation(),
-          { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+              ()=>{
+                this.searchPropertyForLocation();
+              })
+           },
+           (error) => 
+           this.searchPropertyForLocation(),
+           { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
         );
       } else {
         this.searchPropertyForLocation();
@@ -306,9 +306,8 @@ class PropertyCatalogue extends Component {
     const requestOptions = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + auth.token,
-      },
-      // body: JSON.stringify({ property})
+        "Authorization": "Bearer " +auth.token
+        },
     };
     axios
       .post(favapi, property, requestOptions)
