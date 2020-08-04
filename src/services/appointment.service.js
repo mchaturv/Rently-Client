@@ -17,8 +17,7 @@ function makeAppointment(propertyId, userId, timeSlot) {
       body: JSON.stringify({ propertyId, userId, timeSlot }),
     };
     return fetch(
-      //change url
-      `http://localhost:3100/api/appointments/add-appointment`,
+      `https://rently-services-group13.herokuapp.com/api/appointments/add-appointment`,
       requestOptions
     )
       .then(handleResponse)
