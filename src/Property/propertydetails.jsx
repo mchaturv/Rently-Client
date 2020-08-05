@@ -295,11 +295,11 @@ class PropertyDetails extends React.Component {
                       sed do eiusmod tempor incididunt ut labore et dolore magna
                       aliqua.{" "}
                     </p>
-                    <a href="#" class="contactowner-btn">
+                    <a href="http://localhost:3000/" class="contactowner-btn">
                       Contact the Owner
                     </a>
 
-                    <a href="http://localhost:3000/" class="makeappointment-btn">
+                    <a href="#" class="makeappointment-btn">
                       <BookingComponent>Make an Appointment</BookingComponent>
                     </a>
                   </div>
