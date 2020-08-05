@@ -40,9 +40,9 @@ const MaterialModal= (props)=>{
 
     const body = (
         <div style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">Screen yet to be developed</h2>
+            <h2 id="simple-modal-title">Congratulations</h2>
             <p id="simple-modal-description">
-                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                Complete
             </p>
         </div>
     );
