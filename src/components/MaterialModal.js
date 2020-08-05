@@ -42,7 +42,7 @@ const MaterialModal= (props)=>{
         <div style={modalStyle} className={classes.paper}>
             <h2 id="simple-modal-title">Congratulations</h2>
             <p id="simple-modal-description">
-                Complete
+                Your Lising has been posted
             </p>
         </div>
     );
