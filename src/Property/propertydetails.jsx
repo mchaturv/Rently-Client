@@ -295,7 +295,7 @@ class PropertyDetails extends React.Component {
                       sed do eiusmod tempor incididunt ut labore et dolore magna
                       aliqua.{" "}
                     </p>
-                    <a href="http://localhost:3000/" class="contactowner-btn">
+                    <a href="https://rently-messaging-interface.herokuapp.com/" class="contactowner-btn">
                       Contact the Owner
                     </a>
 
