@@ -4,15 +4,15 @@
 
 Rently is a web application that aims to provide a seamless experience for the students to help them in the process of room searching. They can use the platform to search for rooms based on their specific criteria, shortlist rooms they like by adding it to a wish list and book appointments for visiting the property. The owners can use Rently to post advertisements for their room. They can decide and fix the time slots they are available so that tenants can book accordingly. 
 
-* *Date Created*: 1 JUN 2020
-* *Last Modification Date*: 7 JUL 2020
+* Date Created*: 1 JUN 2020
+* Last Modification Date*: 7 JUL 2020
 
 ## Authors
 
-[Vikram Singh](vikram.singh@dal.ca)
-[Mayank Chaturvedi](mayank.chaturvedi@dal.ca)
-[Anshdeep Singh]
-[Sayed Abrar]
+- [Vikram Singh](vikram.singh@dal.ca)
+- [Mayank Chaturvedi](mayank.chaturvedi@dal.ca)
+- Anshdeep Singh
+- Sayed Abrar
 
 ##Git repository
 Rently - [Click here](WEB-G13-RENTLY](https://git.cs.dal.ca/vikrams/web-g13-rently.git)
@@ -29,34 +29,34 @@ Rently - [Click here](WEB-G13-RENTLY](https://git.cs.dal.ca/vikrams/web-g13-rent
 
 ## Built With
 
-[Node.js](https://nodejs.org/en/download/): Open-source, cross-platform, javascript runtime environment. 
-[React](https://reactjs.org/): It is a web application framework to develop the frontend. It helps us to create attractive single-page applications. 
-[Express](https://expressjs.com/): It is a web application framework for Node.js for the development of backend, that handles all the interactions between the frontend and database ensuring a smooth transfer of data to the end-user.
-[MongoDB Atlas](https://www.mongodb.com/cloud/atlas): MongoDB is a NOSQL database which uses JSON-like documents with schema. 
+* [Node.js](https://nodejs.org/en/download/): Open-source, cross-platform, javascript runtime environment. 
+* [React](https://reactjs.org/): It is a web application framework to develop the frontend. It helps us to create attractive single-page applications. 
+* [Express](https://expressjs.com/): It is a web application framework for Node.js for the development of backend, that handles all the interactions between the frontend and database ensuring a smooth transfer of data to the end-user.
+* [MongoDB Atlas](https://www.mongodb.com/cloud/atlas): MongoDB is a NOSQL database which uses JSON-like documents with schema. 
 We have used MongoDB Atlas which is a cloud database service for the modern application.
-[Mongoosejs](https://mongoosejs.com/): Mongoose provides a straight-forward, schema-based solution to model your application data.
-[ReactDOM](https://reactjs.org/docs/react-dom.html): Document Object Model for HTTP pages
-[Bootstrap](https://getbootstrap.com/): For Responsiveness in UI designing.
-[Font-Awesome](https://fontawesome.com/): For Social and other icons used on Html pages
-[Create-react-app](https://github.com/facebook/create-react-app) - Set up bioler plate code for a react app
-[Material-UI](https://github.com/mui-org/material-ui) - Material design react components
-[Heroku](https://heroku.com/) - Cloud platform used for hosting webapps
+* [Mongoosejs](https://mongoosejs.com/): Mongoose provides a straight-forward, schema-based solution to model your application data.
+* [ReactDOM](https://reactjs.org/docs/react-dom.html): Document Object Model for HTTP pages
+* [Bootstrap](https://getbootstrap.com/): For Responsiveness in UI designing.
+* [Font-Awesome](https://fontawesome.com/): For Social and other icons used on Html pages
+* [Create-react-app](https://github.com/facebook/create-react-app) - Set up bioler plate code for a react app
+* [Material-UI](https://github.com/mui-org/material-ui) - Material design react components
+* [Heroku](https://heroku.com/) - Cloud platform used for hosting webapps
 
 ##Tools or Applications Used
 ----------------------------
 
-*[Visual Studio Code](https://code.visualstudio.com/): It is a code-editor to built and debug web and cloud-based applications.
-*[Postman](https://www.postman.com/downloads/): It is a tool to make a request to the server and get back response to test the API's functionality
-*[MongoDB Compasss](https://www.mongodb.com/products/compass): It is a GUI for MongoDB, It helps to visually explore the data and interact
+* [Visual Studio Code](https://code.visualstudio.com/): It is a code-editor to built and debug web and cloud-based applications.
+* [Postman](https://www.postman.com/downloads/): It is a tool to make a request to the server and get back response to test the API's functionality
+* [MongoDB Compasss](https://www.mongodb.com/products/compass): It is a GUI for MongoDB, It helps to visually explore the data and interact
 with all CRUD functionalities.
-*[Github Desktop](https://www.sourcetreeapp.com/): It is a GUI application which helps to work with git repositories
+* [Github Desktop](https://www.sourcetreeapp.com/): It is a GUI application which helps to work with git repositories
 
 ## Deployment
 
 App is deployed in Heroku through the Gitlab CI/CD process. Heroku was Integrated with Gitlab Repos with Heroku API Key. Two separate Application has been created to host frontend(Client) and backend(Services) separately.
 
 ###  Heroku Frontend
-* [https://rently-group13.herokuapp.com/](https://rently-group13.herokuapp.com/)  - website hosted on Heroku.
+* [rently](https://rently-group13.herokuapp.com/)  - website hosted on Heroku.
 * React application is built and a server file is created which allows the application to run in 3000 port.
 * Complete Deployment is done through Gitlab CI/CD  Pipelines.
 
