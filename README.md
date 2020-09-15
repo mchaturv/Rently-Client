@@ -9,13 +9,9 @@ Rently is a web application that aims to provide a seamless experience for the s
 
 ## Authors
 
-- [Vikram Singh](vikram.singh@dal.ca)
 - [Mayank Chaturvedi](mayank.chaturvedi@dal.ca)
-- Anshdeep Singh
-- Sayed Abrar
+- [Anshdeep Singh]((anshdeep.singh@dal.ca)
 
-##Git repository
-Rently - [Click here](WEB-G13-RENTLY](https://git.cs.dal.ca/vikrams/web-g13-rently.git)
 
 
 ## Deployment info
@@ -59,112 +55,6 @@ App is deployed in Heroku through the Gitlab CI/CD process. Heroku was Integrate
 * [rently](https://rently-group13.herokuapp.com/)  - website hosted on Heroku.
 * React application is built and a server file is created which allows the application to run in 3000 port.
 * Complete Deployment is done through Gitlab CI/CD  Pipelines.
-
-
-# Sources Used
-
-
-###Header.js
-
-*Lines 35 - 55*
-
-```
-<PopupState variant="popper" popupId="calendar_popper">
-    {(popupState) => (
-        <ClickAwayListener onClickAway={popupState.close}>
-            <div>
-                <IconButton {...bindToggle(popupState)}>
-                    <DateRangeIcon fontSize={"default"}/>
-                </IconButton>
-
-                <Popper {...bindPopper(popupState)} transition>
-                    {({ TransitionProps }) => (
-                        <Fade {...TransitionProps} timeout={350}>
-                            <Paper>
-                                <MaterialTypography variant={"subtitle1"} text={"appointments popper"}></MaterialTypography>
-                            </Paper>
-                        </Fade>
-                    )}
-                </Popper>
-            </div>
-        </ClickAwayListener>
-    )}
-</PopupState> 
-
-```
-
-The code above was created by adapting the code in [MaterialUI Popper](https://material-ui.com/components/popper/) as shown below: 
-
-```
-<PopupState variant="popper" popupId="demo-popup-popper">
-  {(popupState) => (
-    <div>
-      <Button variant="contained" color="primary" {...bindToggle(popupState)}>
-        Toggle Popper
-      </Button>
-      <Popper {...bindPopper(popupState)} transition>
-        {({ TransitionProps }) => (
-          <Fade {...TransitionProps} timeout={350}>
-            <Paper>
-              <Typography className={classes.typography}>The content of the Popper.</Typography>
-            </Paper>
-          </Fade>
-        )}
-      </Popper>
-    </div>
-  )}
-</PopupState>
-
-```
-
-
-The code in [Google Maps in React](https://medium.com/@imranhsayed/google-maps-in-react-autocomplete-location-search-draggable-marker-marker-infobox-565ab8e8cf22) was used and changed to implement autocompleted search feature for location-based Search
-[Google Maps in React](https://medium.com/@imranhsayed/google-maps-in-react-autocomplete-location-search-draggable-marker-marker-infobox-565ab8e8cf22) 's Code was modified by changing the state elements and CSS styling for the autocompleted component.
-
-------
-### ModalSetup.jsx [Lines 08-31]
----------------
-```
-<Modal
-{...props}
-size="lg"
-aria-labelledby="example-modal-sizes-title-xl"
-centered
-dialogClassName="modal-95w"
->
-	<Modal.Header  style={{ color:  '#995fc5' }}  closeButton>
-	  <Modal.Title  id="contained-modal-title-vcenter">
-	  Property Details
-	  </Modal.Title>
-	</Modal.Header>
-	<Modal.Body>
-	{props.show &&
-	<PropertyDetails  propertyDetails={props.propertyDetails}  />
-	}
-	</Modal.Body>
-	<Modal.Footer>
-		<div>
-		<button  style={{ backgroundColor:  '#995fc5', color:  '#fff' }}  onClick={props.close}>Close</button>
-		</div>
-	</Modal.Footer>
-</Modal>
-)
-
-```
-
-The code above was created by adapting the code to implement Modal View to display the property details
-
-The code in [Modal in React Bootstrap](https://react-bootstrap.github.io/components/modal/) was used to display property details in modal view on click of property card
-[Modal in React Bootstrap](https://react-bootstrap.github.io/components/modal/) 's Code was modified by changing the state elements and including the custom made component 'property details'
-
-
-### N.B: CRUD operations with mongoose interaction were done referring
-[Moongose Query ](https://mongoosejs.com/docs/queries.html)
-
-
-- [MaterialUI Popper](https://material-ui.com/components/popper/) is developed by [Material-UI SAS, Paris](https://material-ui.com/company/about/).
-- [MaterialUI Popper](https://material-ui.com/components/popper/) was used because the component snippet was useful for the Notification pop-up. 
-- [MaterialUI Popper](https://material-ui.com/components/popper/) code modified by [Vikram Singh](vikram.singh@dal.ca)
 
 
 
